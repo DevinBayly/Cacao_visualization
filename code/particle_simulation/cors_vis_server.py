@@ -1,5 +1,8 @@
-from http.server import HTTPServer, SimpleHTTPRequestHandler, test
+from http.server import HTTPSServer, SimpleHTTPRequestHandler, test
 import sys
+
+
+
 
 class CORSRequestHandler (SimpleHTTPRequestHandler):
     def end_headers (self):
@@ -7,4 +10,4 @@ class CORSRequestHandler (SimpleHTTPRequestHandler):
         SimpleHTTPRequestHandler.end_headers(self)
 
 if __name__ == '__main__':
-    test(CORSRequestHandler, HTTPServer, port=7788)
+    test(CORSRequestHandler, HTTPSServer, port=7788,tls_cert="cert.pem",tls_key="key.pem")
